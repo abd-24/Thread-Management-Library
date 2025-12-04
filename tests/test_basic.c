@@ -3,8 +3,7 @@
 #include "../include/tml.h"
 
 void task(void *arg) {
-    int *p = (int *)arg;
-    free(p);
+    free(arg);
 }
 
 int main() {
@@ -15,6 +14,7 @@ int main() {
         int *v = malloc(sizeof(int));
         if (!v)
             return 1;
+
         *v = i;
 
         if (tml_submit_fn(task, v) != 0) {
